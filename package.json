@@ -1,0 +1,17 @@
+{
+  "name": "create-next-pamo-app",
+  "version": "1.0.7",
+  "description": "Pamosystems Next.js starter app",
+  "main": "./bin/cli.sh",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": "./bin/cli.sh",
+  "keywords": [
+    "Pamo",
+    "Next.js",
+    "Starter"
+  ],
+  "author": "Paul Moreland",
+  "license": "MIT"
+}

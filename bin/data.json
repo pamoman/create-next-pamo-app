@@ -1,0 +1,30 @@
+{
+    "dependencies": [
+        "@apollo/client",
+        "@emotion/cache",
+        "@emotion/react",
+        "@emotion/server",
+        "@emotion/styled",
+        "@mui/icons-material",
+        "@mui/lab",
+        "@mui/material",
+        "dotenv",
+        "graphql",
+        "keen-slider",
+        "next-auth",
+        "node-fetch",
+        "react-cookie",
+        "react-markdown",
+        "react-pdf",
+        "react-player",
+        "sharp"
+    ],
+    "template": "https://github.com/pamoman/pamo-next-app.git",
+    "cleanup": [
+        "pages/api/hello.js",
+        "pages/_app.js",
+        "pages/index.js",
+        "styles/globals.css",
+        "styles/Home.module.css"
+    ]
+}
