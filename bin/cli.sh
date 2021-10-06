@@ -3,7 +3,7 @@
 # Pamo Creat Next App Starter Script
 # By paul@pamosystems
 
-DIR="$(dirname "$0")"
+DIR="$(realpath ./bin)"
 CURRENT_DIR="$PWD"
 DATA="$DIR/data.json"
 EXCLUDE="$DIR/exclude.txt"
