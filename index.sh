@@ -3,10 +3,11 @@
 # Pamo Creat Next App Starter Script
 # By paul@pamosystems
 
-DIR="$(realpath ./bin)"
+NAME="create-next-pamo-app"
+DIR="$(dirname "$0")"
 CURRENT_DIR="$PWD"
-DATA="$DIR/data.json"
-EXCLUDE="$DIR/exclude.txt"
+DATA="$DIR/../$NAME/data.json"
+EXCLUDE="$DIR/../$NAME/exclude.txt"
 
 DEPENDENCIES=$(jq -r '.dependencies | join(" ")' "$DATA")
 TEMPLATE_URL=$(jq -r '.template' "$DATA")
