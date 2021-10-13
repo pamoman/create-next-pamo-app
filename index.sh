@@ -102,7 +102,12 @@ echo -e "\nCreate next project...\n"
 
 sleep 1
 
-read -p "Project name: " name
+if [ $# -eq 0 ];
+  then
+    read -p "Project name: " name
+else
+    name="$1"
+fi
 
 echo -e "\nStarting create-next-app...\n"
 
