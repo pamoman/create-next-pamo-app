@@ -1,4 +1,6 @@
 {
+    "template": "https://github.com/pamoman/pamo-next-app.git",
+    "devUrl": "https://dev.pamosystems.com",
     "dependencies": [
         "@apollo/client",
         "@emotion/cache",
@@ -12,6 +14,7 @@
         "graphql",
         "keen-slider",
         "next-auth",
+        "next-pwa",
         "node-fetch",
         "react-cookie",
         "react-markdown",
@@ -19,7 +22,6 @@
         "react-player",
         "sharp"
     ],
-    "template": "https://github.com/pamoman/pamo-next-app.git",
     "cleanup": [
         "pages/api/hello.js",
         "pages/_app.js",
