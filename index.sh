@@ -34,18 +34,16 @@ NEXT_PUBLIC_API_URL=$api_url
 NEXT_PUBLIC_DATABASE_URL=mysql://strapi:strapi@localhost:3306/strapi?synchronize=true
 GLOBALS_DATA_PATH="./data"
 GLOBALS_API_ROUTE=$globals_api_route
+OAUTH_CLIENT_ID=12345
+OAUTH_CLIENT_SECRET=12345
 EOT
 
-    cat <<EOT >> .env.development.local
+    cat <<EOT >> .env.development
 NEXTAUTH_URL=$DEV_URL
-OAUTH_CLIENT_ID=12345
-OAUTH_CLIENT_SECRET=12345
 EOT
 
-    cat <<EOT >> .env.production.local
+    cat <<EOT >> .env.production
 NEXTAUTH_URL=$next_prod_url
-OAUTH_CLIENT_ID=12345
-OAUTH_CLIENT_SECRET=12345
 EOT
 
     echo -e "\nSetting up package.json for enviromental variables...\n"
@@ -69,18 +67,16 @@ NEXT_PUBLIC_API_URL=https://my-api.com
 NEXT_PUBLIC_DATABASE_URL=mysql://strapi:strapi@localhost:3306/strapi?synchronize=true
 GLOBALS_DATA_PATH="./data"
 GLOBALS_API_ROUTE=site-globals
+OAUTH_CLIENT_ID=12345
+OAUTH_CLIENT_SECRET=12345
 EOT
 
-    cat <<EOT >> .env.development.local
+    cat <<EOT >> .env.development
 NEXTAUTH_URL=https://dev.my-domain.com
-OAUTH_CLIENT_ID=12345
-OAUTH_CLIENT_SECRET=12345
 EOT
 
-    cat <<EOT >> .env.production.local
+    cat <<EOT >> .env.production
 NEXTAUTH_URL=https://my-app.com
-OAUTH_CLIENT_ID=12345
-OAUTH_CLIENT_SECRET=12345
 EOT
 }
 
