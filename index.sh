@@ -56,7 +56,6 @@ EOT
     jq '.scripts.dev = "npm run getGlobals && next dev"' package.json > "$tmp" && mv "$tmp" package.json
     jq '.scripts.build = "npm run getGlobals && next build"' package.json > "$tmp" && mv "$tmp" package.json
     jq '.scripts.rebuild = "npm run build && pm2 restart App-name"' package.json > "$tmp" && mv "$tmp" package.json
-    jq '.scripts.start = "npm run getGlobals && next start"' package.json > "$tmp" && mv "$tmp" package.json
 }
 
 # Setup the default enviromental variables
