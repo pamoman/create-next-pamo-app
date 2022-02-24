@@ -64,10 +64,14 @@ function setupEnv
         cat <<EOT >> .env
 NEXT_PUBLIC_API_URL=https://my-api.com
 NEXT_PUBLIC_DATABASE_URL=mysql://strapi:strapi@localhost:3306/strapi?synchronize=true
-GLOBALS_DATA_PATH="./data"
-GLOBALS_API_ROUTE=site-globals
+GLOBAL_DATA_PATH="./data/Global"
+GLOBALS_API_ROUTE=api/global?populate[header][populate]=*&populate[footer][populate]=*
+COMPANY_API_ROUTE=api/company
+PAGES_API_ROUTE=api/pages?sort[0]=path
 OAUTH_CLIENT_ID=12345
 OAUTH_CLIENT_SECRET=12345
+JWT_SIGNING_PRIVATE_KEY={}
+NEXT_GOOGLE_MAPS_API_KEY=""
 EOT
 
     cat <<EOT >> .env.development

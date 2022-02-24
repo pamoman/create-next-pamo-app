@@ -11,8 +11,10 @@
         "@mui/lab",
         "@mui/material",
         "dotenv",
+        "google-map-react",
         "graphql",
         "keen-slider",
+        "material-ui-popup-state",
         "next-auth",
         "next-pwa",
         "node-fetch",
@@ -20,7 +22,8 @@
         "react-markdown",
         "react-pdf",
         "react-player",
-        "sharp"
+        "sharp",
+        "simple-react-lightbox"
     ],
     "cleanup": [
         "pages/api/hello.js",
