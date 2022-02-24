@@ -25,17 +25,19 @@ function setupUserEnv
 
     read -p "API URL: " api_url
 
-    read -p "Globals API route: " globals_api_route
-
     read -p "Next Production URL: " next_prod_url
 
     cat <<EOT >> .env
 NEXT_PUBLIC_API_URL=$api_url
 NEXT_PUBLIC_DATABASE_URL=mysql://strapi:strapi@localhost:3306/strapi?synchronize=true
-GLOBALS_DATA_PATH="./data"
-GLOBALS_API_ROUTE=$globals_api_route
+GLOBAL_DATA_PATH="./data/Global"
+GLOBALS_API_ROUTE=api/global?populate[header][populate]=*&populate[footer][populate]=*
+COMPANY_API_ROUTE=api/company
+PAGES_API_ROUTE=api/pages?sort[0]=path
 OAUTH_CLIENT_ID=12345
 OAUTH_CLIENT_SECRET=12345
+JWT_SIGNING_PRIVATE_KEY={}
+NEXT_GOOGLE_MAPS_API_KEY=""
 EOT
 
     cat <<EOT >> .env.development
@@ -53,8 +55,8 @@ EOT
     tmp=$(mktemp)
 
     jq '.scripts.getGlobals = "node ./services/globals.mjs"' package.json > "$tmp" && mv "$tmp" package.json
-    jq '.scripts.dev = "npm run getGlobals && next dev"' package.json > "$tmp" && mv "$tmp" package.json
-    jq '.scripts.build = "npm run getGlobals && next build"' package.json > "$tmp" && mv "$tmp" package.json
+    jq '.scripts.dev = "next dev"' package.json > "$tmp" && mv "$tmp" package.json
+    jq '.scripts.build = "next build"' package.json > "$tmp" && mv "$tmp" package.json
     jq '.scripts.rebuild = "npm run build && pm2 restart App-name"' package.json > "$tmp" && mv "$tmp" package.json
 }
 
