@@ -3,15 +3,16 @@
 # Pamo Creat Next App Starter Script
 # By paul@pamosystems
 
-NAME="create-next-pamo-app"
-DIR="$(dirname "$0")"
 WORKING_DIR="$PWD"
-DATA="$DIR/../$NAME/data.json"
-EXCLUDE="$DIR/../$NAME/exclude.txt"
+DIR="$(dirname "$0")"
 
-# Uncomment below and comment above when testing locally
-# DATA="$DIR/data.json"
-# EXCLUDE="$DIR/exclude.txt"
+if [ ! -f "$DIR"/package.json ]; then
+  DIR="$(dirname "$DIR")"/lib/node_modules/"$(basename "$0")"
+fi
+
+DIR="$(cd "$BASE" && pwd)"
+DATA="$DIR/data.json"
+EXCLUDE="$DIR/exclude.txt"
 
 DEPENDENCIES=$(jq -r '.dependencies | join(" ")' "$DATA")
 TEMPLATE_URL=$(jq -r '.template' "$DATA")
