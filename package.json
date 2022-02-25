@@ -1,6 +1,6 @@
 {
   "name": "create-next-pamo-app",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Pamosystems Next.js starter app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
