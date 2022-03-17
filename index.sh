@@ -15,7 +15,6 @@ EXCLUDE="$DIR"/../lib/node_modules/"$NAME"/exclude.txt
 
 DEPENDENCIES=$(jq -r '.dependencies | join(" ")' "$DATA")
 TEMPLATE_URL=$(jq -r '.template' "$DATA")
-DEV_URL=$(jq -r '.devUrl' "$DATA")
 CLEANUP=$(jq -r '.cleanup | join(" ")' "$DATA")
 
 # Setup the user enviromental variables
@@ -25,15 +24,17 @@ function setupUserEnv
 
     read -p "API URL: " api_url
 
+    read -p "Next Development URL: " next_dev_url
+
     read -p "Next Production URL: " next_prod_url
 
     cat <<EOT >> .env
 NEXT_PUBLIC_API_URL=$api_url
 NEXT_PUBLIC_DATABASE_URL=mysql://strapi:strapi@localhost:3306/strapi?synchronize=true
 GLOBAL_DATA_PATH="./data/Global"
-GLOBALS_API_ROUTE=api/global?populate[header][populate]=*&populate[footer][populate]=*
+GLOBALS_API_ROUTE=api/global?populate[header][populate][logo]=*&populate[header][populate][pwa][populate][icons]=*&populate[footer][populate]=*
 COMPANY_API_ROUTE=api/company
-PAGES_API_ROUTE=api/pages?sort[0]=path
+PAGES_API_ROUTE=api/pages?sort[0]=order&sort[1]=path&populate[icon][populate]=*
 OAUTH_CLIENT_ID=12345
 OAUTH_CLIENT_SECRET=12345
 JWT_SIGNING_PRIVATE_KEY={}
@@ -41,7 +42,7 @@ NEXT_GOOGLE_MAPS_API_KEY=""
 EOT
 
     cat <<EOT >> .env.development
-NEXTAUTH_URL=$DEV_URL
+NEXTAUTH_URL=$next_dev_url
 EOT
 
     cat <<EOT >> .env.production
@@ -54,10 +55,10 @@ EOT
 
     tmp=$(mktemp)
 
+    jq '.scripts.start = "next start -p PORT"' package.json > "$tmp" && mv "$tmp" package.json
     jq '.scripts.getGlobals = "node ./services/globals.mjs"' package.json > "$tmp" && mv "$tmp" package.json
-    jq '.scripts.dev = "next dev"' package.json > "$tmp" && mv "$tmp" package.json
-    jq '.scripts.build = "next build"' package.json > "$tmp" && mv "$tmp" package.json
-    jq '.scripts.rebuild = "npm run build && pm2 restart App-name"' package.json > "$tmp" && mv "$tmp" package.json
+    jq '.scripts.predev = ""' package.json > "$tmp" && mv "$tmp" package.json
+    jq '.scripts.prebuild = ""' package.json > "$tmp" && mv "$tmp" package.json
 }
 
 # Setup the default enviromental variables
