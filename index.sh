@@ -32,9 +32,8 @@ function setupUserEnv
 NEXT_PUBLIC_API_URL=$api_url
 NEXT_PUBLIC_DATABASE_URL=mysql://strapi:strapi@localhost:3306/strapi?synchronize=true
 GLOBAL_DATA_PATH="./data/Global"
-GLOBALS_API_ROUTE=api/global?populate[header][populate][logo]=*&populate[header][populate][pwa][populate][icons]=*&populate[footer][populate]=*
+GLOBALS_API_ROUTE=api/global?populate[header][populate][nav]=*&populate[header][populate][seo]=*&populate[header][populate][pwa][populate][icons]=*&populate[header][populate][logo]=*&populate[footer][populate]=*
 COMPANY_API_ROUTE=api/company
-PAGES_API_ROUTE=api/pages?sort[0]=order&sort[1]=path&populate[icon][populate]=*
 OAUTH_CLIENT_ID=12345
 OAUTH_CLIENT_SECRET=12345
 JWT_SIGNING_PRIVATE_KEY={}
